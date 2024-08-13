@@ -1,0 +1,72 @@
+<section class="flex items-start bg-gray-50 dark:bg-gray-900">
+    <div class="w-full max-w-screen-xl px-4 mx-auto lg:px-12">
+      <!-- Start coding here -->
+      <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+        <div class="flex-row items-center justify-between p-4 space-y-3 sm:flex sm:space-y-0 sm:space-x-4">
+          <div>
+            <h5 class="mr-3 font-semibold dark:text-white">Flowbite Users</h5>
+          </div>
+          <button type="button"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" routerLink="/fruit/create">
+            Add new fruit
+          </button>
+        </div>
+      </div>
+    </div>
+</section>
+<section>
+    <div class="w-full max-w-screen-xl px-4 mx-auto mt-2 lg:px-12">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Fruit Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Quantity
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Price
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Update
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Remove
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" *ngFor="let item of allFruits; let i = index">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{i+1}}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{item.name}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{item.quantity}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{item.price}}
+                    </td>
+                    <td class="px-6 py-4">
+                        <button type="button"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" [routerLink]="['/fruit/edit', item.id]">
+                            Edit
+                        </button>
+                    </td>
+                    <td class="px-6 py-4">
+                        <button type="button"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" (click)="deleteItem(item.id)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
