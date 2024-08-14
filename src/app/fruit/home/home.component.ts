@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Fruit } from '../fruit';
 import { FruitService } from '../fruit.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   allFruits: Fruit[] = [];
 
-  constructor(private fruitService: FruitService) {}
+  constructor(private fruitService: FruitService, private router: Router) {}
 
   ngOnInit(): void {
     this.fruitService.getAllFruits().subscribe((data) => {
@@ -26,5 +27,10 @@ export class HomeComponent implements OnInit {
       }
     })
   }
+
+  editFruit(id: number) {
+    this.router.navigate([`fruit/edit/${id}`]); // Navigate to edit component with ID
+  }
+  
 
 }

@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "apple",
-      "quantity": 10,
+      "quantity": 11,
       "price": 100
     },
     {
@@ -19,22 +19,10 @@
       "price": 120
     },
     {
-      "id": 4,
-      "name": "guava",
-      "quantity": 5,
-      "price": 50
-    },
-    {
-      "id": 5,
-      "name": "grapes",
-      "quantity": 20,
-      "price": 90
-    },
-    {
       "id": 0,
-      "name": "Ruban",
-      "quantity": 5,
-      "price": 100
+      "name": "banana",
+      "quantity": 12,
+      "price": 60
     }
   ]
 }

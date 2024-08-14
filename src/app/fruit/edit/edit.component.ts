@@ -9,42 +9,39 @@ import { Fruit } from '../fruit';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+  fruit: Fruit | null = null; // To hold the fruit details
 
-  formData: Fruit = {
-    id: 0,
-    name: '',
-    price: 0,
-    quantity: 0
-  }
-
-  constructor(private fruitService: FruitService, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private fruitService: FruitService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((param) => {
-      let id = param.get('id') as string;
-      this.getById(id);
-    })
+    const id = this.route.snapshot.paramMap.get('id'); // Get the ID from the route
+    if (id) {
+      this.fruitService.editFruit(+id).subscribe({
+        next: (data) => {
+          this.fruit = data; // Set the fetched fruit details
+        },
+        error: (err) => {
+          console.error('Error fetching fruit:', err); // Log error
+          this.router.navigate(['fruit/home']); // Redirect on error
+        }
+      });
+    }
   }
 
-  getById(id: string){    
-    this.fruitService.editFruit(id).subscribe({
-      next: (res: any) =>{
-        console.log(res);
-      },
-      error: (err: any) =>{
-        console.log(err);
-      }
-    })
-  }
-
-  update(){
-    this.fruitService.updateFruit(this.formData).subscribe({
-      next:(data) => {
-        this.router.navigate(['fruit/home']);
-      },
-      error:(err) => {
-        console.log(err);
-      }
-    })
+  updateFruit() {
+    if (this.fruit) {
+      this.fruitService.updateFruit(this.fruit).subscribe({
+        next: () => {
+          this.router.navigate(['fruit/home']); // Navigate back after update
+        },
+        error: (err) => {
+          console.error('Error updating fruit:', err);
+        }
+      });
+    }
   }
 }

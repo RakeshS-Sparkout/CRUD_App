@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
-import { FruitModule } from './fruit/fruit.module';
 import { RouterLink } from '@angular/router';
+import { FruitModule } from './fruit/fruit.module';
 
 @NgModule({
   declarations: [
@@ -17,8 +17,8 @@ import { RouterLink } from '@angular/router';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FruitModule,
-    RouterLink
+    RouterLink,
+    FruitModule
   ],
   providers: [],
   bootstrap: [AppComponent]
